@@ -1,0 +1,14 @@
+#Application is spring boot service
+#spring boot version 3.3.3
+#restEnpoint :
+3 instances would be running
+http://localhost:8080/helloworld
+http://localhost:8081/helloworld
+http://localhost:8083/helloworld
+
+--import the project
+build it with mvn clean install from project root directory
+build the image with name myfirstimage
+hit "docker compose up"
+
+3 service instance will be running 

@@ -1,0 +1,15 @@
+services:
+  #service name
+  myfirstService:
+    image: myfirstimage
+ #specify the docker file path for build reference
+    build:
+      context: .
+      dockerfile: DockerFile
+#port range for the different container to match
+    ports:
+      - "8080-8083:8080"
+#multipe service replicas
+    deploy:
+      mode: replicated
+      replicas: 3
