@@ -7,9 +7,28 @@ services:
       context: .
       dockerfile: DockerFile
 #port range for the different container to match
+    networks:
+      - kuldeep_network
     ports:
       - "8080-8083:8080"
 #multipe service replicas
+    volumes:
+      - service_data:/usr/target
     deploy:
       mode: replicated
       replicas: 3
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    networks:
+      - kuldeep_network
+    volumes:
+      - db_data:/target/mysql
+networks:
+   kuldeep_network:
+     driver: bridge
+
+volumes:
+  service_data:
+  db_data:
